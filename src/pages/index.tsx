@@ -1,15 +1,12 @@
 import { type NextPage } from "next";
 import Head from "next/head";
-import { signIn, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import { api } from "~/utils/api";
-import { useForm } from "react-hook-form";
 import Link from "next/link";
 import Layout from "~/components/Layout";
 
 const Home: NextPage = () => {
   const { data: products } = api.product.getAll.useQuery();
-  console.log(products);
   return (
     <>
       <Head>
@@ -19,7 +16,7 @@ const Home: NextPage = () => {
       </Head>
       <Layout>
         <main className="flex min-h-screen flex-col bg-neutral-100 ">
-          <ul className="flex flex-wrap justify-center gap-12 p-12">
+          <ul className="flex flex-wrap justify-center gap-12 p-12 max-w-[2560px] mx-auto">
             {products &&
               products.map((product) => {
                 return (
